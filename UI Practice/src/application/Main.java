@@ -37,7 +37,7 @@ public class Main extends Application {
 			border.setCenter(centerPane);
 			
 			Scene scene = new Scene(border,600,500);
-			scene.setFill(Color.LIGHTCYAN);
+			scene.setFill(Color.LIGHTBLUE);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setMinHeight(500);
 			primaryStage.setMinWidth(600);
@@ -99,7 +99,7 @@ public class Main extends Application {
 			interestsBox.getChildren().add(i, interests[i]);
 		}
 		
-		HBox buttons = new HBox(50);
+		HBox buttons = new HBox(100);
 		Button generateBtn = new Button("Generate");
 		
 		Button resetBtn = new Button("RESET");
@@ -112,18 +112,21 @@ public class Main extends Application {
 				maleBtn.setSelected(false);
 				femaleBtn.setSelected(false);
 				address.setText("");
+				branch.hide();
 				for(int i = 0; i < str.length; i++) {
 					interests[i].setSelected(false);
 				}
-				
 			}
 		});
+		buttons.getChildren().addAll(generateBtn, resetBtn);
+		buttons.setAlignment(Pos.CENTER);
 		
 		GridPane gridPane = new GridPane();
 		gridPane.setHgap(10);
 		gridPane.setVgap(10);
 		gridPane.addColumn(0, textName, textAge, textGender, textAddress, textBranch, textInterests);
 		gridPane.addColumn(1, name, age, genderBox, address, branch, interestsBox);
+		gridPane.add(buttons, 1, 10);
 			
 		return gridPane;
 	}
